@@ -1,14 +1,18 @@
-import { Dashboard } from './components/Dashboard';
-import { SearchBox } from './components/SearchBox';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { BooksProvider } from './hooks/useBooks';
+
+import { Routes } from './routes';
 import { GlobalStyle } from './styles/global';
 
 function App() {
   return (
-    <>
-      <SearchBox />
-      <Dashboard name="Lucas Giraldelli" />
+    <BooksProvider>
       <GlobalStyle />
-    </>
+
+      <Router>
+        <Routes />
+      </Router>
+    </BooksProvider>
   );
 }
 
