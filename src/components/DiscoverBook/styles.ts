@@ -10,6 +10,7 @@ export const Container = styled.section`
   background-color: transparent; // making the container
 
   div {
+    position: relative;
     background-color: #00173D;
     color: #FFF;
     border-radius: 0.3125rem;
@@ -38,6 +39,12 @@ export const Container = styled.section`
 
     & + div {
       margin-left: 0.625rem;
+    }
+
+    & > img {
+      position: absolute;
+      width: 72px;
+      right: 1.5rem;
     }
   }
 `;
