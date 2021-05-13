@@ -1,13 +1,15 @@
-import { Container } from './styles';
 
-interface DashboardProps {
-  name: string;
-}
+import { DiscoverBook } from "../DiscoverBook";
+import { CurrentlyReading } from '../CurrentlyReading';
+import { Container } from "./styles";
+import { ReviewsOfTheDay } from "../ReviewsOfTheDay";
 
-export function Dashboard({ name }: DashboardProps) {
+export function Dashboard() {
   return (
     <Container>
-      <p>Hi, <span>{ name }</span> 👋</p>
+      <DiscoverBook />
+      <CurrentlyReading />
+      <ReviewsOfTheDay />
     </Container>
-  )
+  );
 }

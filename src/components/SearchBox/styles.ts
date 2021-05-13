@@ -4,9 +4,13 @@ interface ContainerProps {
   isFocused: boolean;
 }
 
-export const Container = styled.div<ContainerProps>`
+export const Container = styled.form<ContainerProps>`
   display: flex;
+  align-items: center;
   position: relative;
+
+  height: 3rem;
+  max-width: 336px;
   margin: 3.125rem 1.25rem 1.875rem;
 
   background: var(--input-background);
@@ -18,11 +22,8 @@ export const Container = styled.div<ContainerProps>`
 
   input {
     outline: none;
-
-    max-width: 336px;
     width: 100%;
-    height: 3rem;
-    padding: 0.9375rem 0;
+    height: 100%;
     margin-left: 2.563rem;
 
     border: none;
@@ -30,17 +31,17 @@ export const Container = styled.div<ContainerProps>`
     background: var(--input-background);
 
     &::placeholder {
-      font-size: 1rem;
-      font-weight: 400;
-      line-height: 1.125rem;
-      font-family: 'SFProText', sans-serif;
       color: var(--input-placeholder);
+
+      font-family: 'SFProText', sans-serif;
+      font-size: 1rem;
+      line-height: 1.125rem;
     }
   }
 
   img {
     position: absolute;
-    top: 0.9375rem;
+    top: 0.8rem;
     left: 0.9375rem;
   }
 `;
