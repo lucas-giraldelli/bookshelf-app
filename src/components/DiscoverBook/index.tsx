@@ -1,10 +1,40 @@
+import { useEffect } from 'react';
 import bookImg from '../../assets/icons/book.svg';
-import bookCover from '../../assets/images/details_book_sample.png';
 
-import { Header } from '../../styles/global';
+import { api } from '../../services/api';
+import { useBooks } from '../../hooks/useBooks';
+
+import { Link } from 'react-router-dom';
 import { Container } from "./styles";
+import { Header } from '../../styles/global';
 
 export function DiscoverBook() {
+  const {
+    saveCurrentDetailBook,
+    discoverBook,
+    setDiscoverBook,
+  } = useBooks();
+
+  async function populateDiscoverBook() {
+    const { REACT_APP_BOOKS_API_KEY } = process.env;
+
+    const book1 = await api.get(`/dsz5AwAAQBAJ?key=${REACT_APP_BOOKS_API_KEY}`);
+
+    const book2 = await api.get(`/U10PAQAAMAAJ?key=${REACT_APP_BOOKS_API_KEY}`);
+
+    const bookIds = [book1.data.id, book2.data.id]; // like if we had already the listing
+
+    const doesntHaveId = discoverBook.every((book, idx) => book.id !== bookIds[idx]);
+
+    if(doesntHaveId) {
+      setDiscoverBook([...discoverBook, book1.data, book2.data]);
+    }
+  }
+
+  useEffect(() => {
+    populateDiscoverBook();
+  }, []);
+
   return (
     <>
       <Header>
@@ -12,33 +42,18 @@ export function DiscoverBook() {
         <p>More</p>
       </Header>
       <Container>
-        <div>
-          <h2>Hooked</h2>
-          <p>Nir Eyal</p>
-          <span>
-            <img src={bookImg} alt="reads" />
-            120+ Read Now
-          </span>
-          <img src={bookCover} alt="Book Cover" />
-        </div>
-        <div>
-          <h2>Hooked</h2>
-          <p>Nir Eyal</p>
-          <span>
-            <img src={bookImg} alt="reads" />
-            120+ Read Now
-          </span>
-          <img src={bookCover} alt="Book Cover" />
-        </div>
-        <div>
-          <h2>Hooked</h2>
-          <p>Nir Eyal</p>
-          <span>
-            <img src={bookImg} alt="reads" />
-            120+ Read Now
-          </span>
-          <img src={bookCover} alt="Book Cover" />
-        </div>
+        {discoverBook.map(book =>(
+          <Link to="/details" onClick={() => saveCurrentDetailBook(book)} key={book.id} >
+            <h2>{book.volumeInfo.title}</h2>
+            <p>{book.volumeInfo.authors}</p>
+            <div>
+              <img src={bookImg} alt="reads" />
+              <span>120+ Read Now</span>
+            </div>
+            <img src={book.volumeInfo.imageLinks.smallThumbnail} alt="Book Cover" />
+          </Link>
+          )
+        )}
       </Container>
     </>
   )

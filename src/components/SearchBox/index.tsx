@@ -1,4 +1,5 @@
-import { useEffect } from 'react';
+import { FormEvent, useEffect } from 'react';
+import { ClassicSpinner } from "react-spinners-kit";
 
 import { useBooks } from '../../hooks/useBooks';
 import { useHistory } from 'react-router-dom';
@@ -7,24 +8,31 @@ import searchImg from '../../assets/icons/search.svg';
 import { Container } from './styles';
 
 export function SearchBox() {
+
   const history = useHistory();
   const {
     focused,
     setFocused,
-    searchBoxValue,
-    setSearchBoxValue,
+    isLoading,
+    displayValue,
+    setDisplayValues,
     handleInputChange,
-    handleInputSubmit
   } = useBooks();
 
   useEffect(() => {
-    if(searchBoxValue) {
+    if(displayValue) {
       history.push('/search');
+
     } else {
-      setSearchBoxValue('');
+      setDisplayValues('');
       return history.push('/');
     }
-  }, [searchBoxValue])
+  }, [displayValue]);
+
+
+  function handleInputSubmit(event: FormEvent) {
+    event.preventDefault();
+  }
 
   return (
     <Container isFocused={focused} onSubmit={handleInputSubmit}>
@@ -33,11 +41,12 @@ export function SearchBox() {
         autoFocus={true}
         type="text"
         placeholder="Search book"
-        value={searchBoxValue}
+        value={displayValue}
         onChange={handleInputChange}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
       />
+      <ClassicSpinner size={17} color="var(--black)" loading={isLoading}/>
     </Container>
   )
 }

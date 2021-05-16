@@ -44,4 +44,8 @@ export const Container = styled.form<ContainerProps>`
     top: 0.8rem;
     left: 0.9375rem;
   }
+
+  div {
+      margin-right: 10px;
+  }
 `;

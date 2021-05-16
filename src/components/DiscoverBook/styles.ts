@@ -7,15 +7,16 @@ export const Container = styled.section`
   padding: 0 1.25rem;
   overflow-x: auto;
 
-  background-color: transparent; // making the container
+  a {
+    display: block;
+    text-decoration: none;
 
-  div {
     position: relative;
     background-color: #00173D;
     color: #FFF;
     border-radius: 0.3125rem;
 
-    min-width: 17rem;
+    min-width: 270px;
     height: 100%;
     padding: 1.25rem;
 
@@ -23,21 +24,33 @@ export const Container = styled.section`
     flex-direction: column;
     justify-content: space-between;
 
+    font-size: 2rem;
+
     h2 {
-      font-size: 1.688rem;
+      font-size: 80%;
       line-height: 2.25rem;
+      max-width: 65%;
     }
 
     p {
+      font-size: 0.875rem;
       font-style: italic;
     }
 
-    span {
+    div {
       display: flex;
       align-items: center;
+
+      text-decoration: none;
+
+      span {
+        color: #FFF;
+        font-size: 0.8rem;
+        margin-left: 5px;
+      }
     }
 
-    & + div {
+    & + a {
       margin-left: 0.625rem;
     }
 

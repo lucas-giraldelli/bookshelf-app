@@ -12,6 +12,7 @@ export const Container = styled.nav`
   overflow-x: auto;
 
   .nav__link {
+    color: var(--black);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,7 +29,7 @@ export const Container = styled.nav`
     --webkit-tap-highlight-color: transparent;
     transition: background-color 0.1s ease-out;
 
-    &.--active {
+    &--active {
       color: var(--nav-links--active);
     }
   }
