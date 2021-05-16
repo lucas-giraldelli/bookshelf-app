@@ -1,10 +1,14 @@
 import { useEffect } from 'react';
-import bookImg from '../../assets/icons/book.svg';
-
+import { Link } from 'react-router-dom';
 import { api } from '../../services/api';
 import { useBooks } from '../../hooks/useBooks';
 
-import { Link } from 'react-router-dom';
+import bookImg from '../../assets/icons/book.svg';
+import ovalImg from '../../assets/images/discover_oval.png';
+import ovalSmallImg from '../../assets/images/discover_oval_small.png';
+import triangleImg from '../../assets/images/discover_triangle.png';
+import rectangleImg from '../../assets/images/discover_rectangle.png';
+
 import { Container } from "./styles";
 import { Header } from '../../styles/global';
 
@@ -44,13 +48,19 @@ export function DiscoverBook() {
       <Container>
         {discoverBook.map(book =>(
           <Link to="/details" onClick={() => saveCurrentDetailBook(book)} key={book.id} >
-            <h2>{book.volumeInfo.title}</h2>
-            <p>{book.volumeInfo.authors}</p>
-            <div>
-              <img src={bookImg} alt="reads" />
-              <span>120+ Read Now</span>
+            <div className="shell">
+              <img src={ovalImg} alt="Discover oval" />
+              <img src={ovalSmallImg} alt="Discover oval small" />
+              <img src={triangleImg} alt="Discover triangle" />
+              <img src={rectangleImg} alt="Discover rectangle" />
+              <h2>{book.volumeInfo.title}</h2>
+              <p>{book.volumeInfo.authors}</p>
+              <div>
+                <img src={bookImg} alt="reads" />
+                <span>120+ Read Now</span>
+              </div>
+              <img src={book.volumeInfo.imageLinks.smallThumbnail} alt="Book Cover" />
             </div>
-            <img src={book.volumeInfo.imageLinks.smallThumbnail} alt="Book Cover" />
           </Link>
           )
         )}
