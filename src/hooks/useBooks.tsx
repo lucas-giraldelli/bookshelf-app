@@ -3,6 +3,7 @@ import {
   useState,
   ReactNode,
   useContext,
+  useEffect,
 } from 'react';
 import { api } from '../services/api';
 import { useDebouncedCallback } from 'use-debounce';
@@ -42,6 +43,8 @@ interface BookContextProps {
 
   searchResults: Book[];
   setSearchResults: (value: Book[]) => void;
+
+  increaseResults: (value: number) => void;
 }
 
 const BooksContext = createContext<BookContextProps>(
@@ -51,6 +54,9 @@ const BooksContext = createContext<BookContextProps>(
 export function BooksProvider({children}: BooksProviderProps) {
   const { REACT_APP_DEBOUNCE_TIME, REACT_APP_MAX_RESULTS } = process.env;
 
+  const maxDebounceTime = Number(REACT_APP_DEBOUNCE_TIME);
+  const maxResults = Number(REACT_APP_MAX_RESULTS);
+
   const [focused, setFocused] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -58,7 +64,7 @@ export function BooksProvider({children}: BooksProviderProps) {
   const debouncedValue = useDebouncedCallback(value => {
     searchBook(value);
     setIsLoading(true);
-  }, Number(REACT_APP_DEBOUNCE_TIME));
+  }, maxDebounceTime);
 
   const [discoverBook, setDiscoverBook] = useState<Book[]>([]);
   const [currentDetailsBook, setCurrentDetailsBooks] = useState<Book>(
@@ -66,19 +72,7 @@ export function BooksProvider({children}: BooksProviderProps) {
   );
 
   const [searchResults, setSearchResults] = useState<Book[]>([]);
-
-  async function searchBook(query: string) {
-    if (!query && !displayValue) {
-      debouncedValue.cancel();
-    }
-
-    const replacedQuery = query.replace(/\s/, '+');
-    const queryString = `?q=${replacedQuery}&maxResults=${REACT_APP_MAX_RESULTS}`
-    const { data } = await api.get(queryString);
-
-    setSearchResults(data.items);
-    setIsLoading(false);
-  }
+  const [totalResults, setTotalResults] = useState(maxResults);
 
   function handleInputChange(event: { target: HTMLInputElement }) {
     setDisplayValues(event.target.value);
@@ -86,15 +80,55 @@ export function BooksProvider({children}: BooksProviderProps) {
     if (event.target.value) {
       debouncedValue(event.target.value);
     } else {
-      setIsLoading(false);
-      setSearchResults([]);
+      resetStatesAndDebounce();
+    }
+  }
+
+  function resetStatesAndDebounce() {
+    setIsLoading(false);
+    setTotalResults(maxResults);
+    setSearchResults([]);
+    debouncedValue.cancel();
+  }
+
+  async function searchBook(query: string) {
+    if (!query && !displayValue) {
       debouncedValue.cancel();
     }
+    callApi(query, maxResults);
   }
 
   function saveCurrentDetailBook(book: Book) {
     setCurrentDetailsBooks(book);
   }
+
+  function increaseResults(value: number) {
+    setTotalResults(totalResults + value);
+  }
+
+  async function loadMore() {
+    if (!displayValue) {
+      debouncedValue.cancel();
+    }
+    callApi(displayValue, totalResults);
+  }
+
+  async function callApi(query: string, maxResults: number) {
+    const replacedQuery = query.replace(/\s/, '+');
+
+    const queryString = `?q=${replacedQuery}&maxResults=${maxResults}`;
+
+    const { data } = await api.get(queryString);
+
+    setSearchResults(data.items);
+    setIsLoading(false);
+  }
+
+  useEffect(() =>{
+    if(totalResults > maxResults) {
+      loadMore();
+    }
+  }, [totalResults])
 
   return (
     <BooksContext.Provider value={{
@@ -109,7 +143,8 @@ export function BooksProvider({children}: BooksProviderProps) {
       discoverBook,
       setDiscoverBook,
       searchResults,
-      setSearchResults
+      setSearchResults,
+      increaseResults,
     }}>
       {children}
     </BooksContext.Provider>
