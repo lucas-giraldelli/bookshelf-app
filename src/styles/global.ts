@@ -20,6 +20,9 @@ export const GlobalStyle = createGlobalStyle`
     --nav-links: #BFBEBF;
     --nav-links--active: #000000;
 
+    --discover-blue: #00173D;
+    --discover-purple: #451475;
+
     --input-placeholder: #54565A;
     --input-background:  #FDFCFC;
 
