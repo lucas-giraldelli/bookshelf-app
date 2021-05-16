@@ -25,14 +25,21 @@ export const Container = styled.div`
 
     img:first-child {
       position: absolute;
-      z-index: -1;
-
+      z-index: -2;
       width: 100%;
+    }
+
+    img:nth-child(2) {
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      right: 0;
     }
 
     img:last-child {
       margin-top: 5.25rem;
-
+      height: 234px;
+      width: 151px;
     }
   }
 
