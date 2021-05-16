@@ -1,68 +1,120 @@
 import {
   createContext,
-  useEffect,
   useState,
   ReactNode,
   useContext,
-  FormEvent
 } from 'react';
-
-import { useHistory } from 'react-router-dom';
 import { api } from '../services/api';
+import { useDebouncedCallback } from 'use-debounce';
 
-interface Books {
-
+export interface Book {
+  id: string;
+  volumeInfo: {
+    title: string;
+    authors: string;
+    description: string;
+    imageLinks: {
+      smallThumbnail: string;
+      thumbnail: string;
+      medium: string;
+    }
+  }
 }
 
 interface BooksProviderProps {
   children: ReactNode;
 }
 
-interface BooksContextProps {
+interface BookContextProps {
   focused: boolean;
   setFocused: (value: boolean) => void;
-  searchBoxValue: string;
-  setSearchBoxValue: (value: string) => void;
+  isLoading: boolean;
+
+  displayValue: string;
+  setDisplayValues: (value: string) => void;
   handleInputChange: (event: {target: HTMLInputElement}) => void;
-  handleInputSubmit: (event: FormEvent) => void;
+
+  discoverBook: Book[];
+  setDiscoverBook: (value: Book[]) => void;
+
+  currentDetailsBook: Book;
+  saveCurrentDetailBook: (value: Book) => void;
+
+  searchResults: Book[];
+  setSearchResults: (value: Book[]) => void;
 }
 
-const BooksContext = createContext<BooksContextProps>(
-  {} as BooksContextProps
+const BooksContext = createContext<BookContextProps>(
+  {} as BookContextProps
 );
 
 export function BooksProvider({children}: BooksProviderProps) {
-  const apiKey = process.env.BOOKS_API_KEY;
-  const history = useHistory();
+  const { REACT_APP_DEBOUNCE_TIME, REACT_APP_MAX_RESULTS } = process.env;
+
   const [focused, setFocused] = useState(false);
-  const [searchBoxValue, setSearchBoxValue] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  const [displayValue, setDisplayValues] = useState('');
+  const debouncedValue = useDebouncedCallback(value => {
+    searchBook(value);
+    setIsLoading(true);
+  }, Number(REACT_APP_DEBOUNCE_TIME));
+
+  const [discoverBook, setDiscoverBook] = useState<Book[]>([]);
+  const [currentDetailsBook, setCurrentDetailsBooks] = useState<Book>(
+    {} as Book
+  );
+
+  const [searchResults, setSearchResults] = useState<Book[]>([]);
+
+  async function searchBook(query: string) {
+    if (!query && !displayValue) {
+      debouncedValue.cancel();
+    }
+
+    const replacedQuery = query.replace(/\s/, '+');
+    const queryString = `?q=${replacedQuery}&maxResults=${REACT_APP_MAX_RESULTS}`
+    const { data } = await api.get(queryString);
+
+    setSearchResults(data.items);
+    setIsLoading(false);
+  }
 
   function handleInputChange(event: { target: HTMLInputElement }) {
-    setSearchBoxValue(event.target.value);
+    setDisplayValues(event.target.value);
+
+    if (event.target.value) {
+      debouncedValue(event.target.value);
+    } else {
+      setIsLoading(false);
+      setSearchResults([]);
+      debouncedValue.cancel();
+    }
   }
 
-  function handleInputSubmit(event: FormEvent) {
-    event.preventDefault();
+  function saveCurrentDetailBook(book: Book) {
+    setCurrentDetailsBooks(book);
   }
-
-  /*useEffect(() => {
-    api('')
-  })*/
 
   return (
     <BooksContext.Provider value={{
       focused,
       setFocused,
-      searchBoxValue,
-      setSearchBoxValue,
+      isLoading,
+      displayValue,
+      setDisplayValues,
       handleInputChange,
-      handleInputSubmit
+      currentDetailsBook,
+      saveCurrentDetailBook,
+      discoverBook,
+      setDiscoverBook,
+      searchResults,
+      setSearchResults
     }}>
       {children}
     </BooksContext.Provider>
   )
 }
-
 
 export function useBooks() {
   const context = useContext(BooksContext);
