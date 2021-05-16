@@ -1,6 +1,17 @@
 import styled from 'styled-components';
 
-export const Container = styled.main`
+export const ResultsBox = styled.p`
+  margin: -1rem 0 0.5rem 0;
+  padding: 0 1.25rem;
+  font-size: 0.8rem;
+  color: #70757a;
+`;
+
+export const Container = styled.div`
+  margin-bottom: 5rem;
+`;
+
+export const GridContainer = styled.main`
   padding: 0 1.25rem;
   display: grid;
   grid-template-columns: repeat(3, 115px);
@@ -42,5 +53,28 @@ export const Container = styled.main`
       font-size: 0.625rem;
     }
   }
+`;
 
+export const Footer = styled.footer`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 37%;
+  margin: 1.5rem auto;
+  background-color: white;
+  border: 1px solid #979797;
+  padding: 0 0.5rem;
+
+  svg {
+    font-size: 1.2rem;
+  }
+
+  button {
+    color: var(--black);
+    font-weight: 700;
+    background: inherit;
+    border: none;
+    font-size: 1.1rem;
+  }
 `;

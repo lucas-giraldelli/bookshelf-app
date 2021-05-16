@@ -5,10 +5,15 @@ import { FiArrowLeft } from 'react-icons/fi';
 import Parser from 'html-react-parser';
 
 import detailsBg from '../../assets/images/details_header.png';
-import detailsOval from '../../assets/images/details_oval.png';
 import defaultImage from "../../assets/images/search_default_img.png";
+import detailsOval from '../../assets/images/details_oval.png';
+import detailsOvalOutline from '../../assets/images/details_oval_outline.png';
+import detailsOvalMedium from '../../assets/images/details_oval_medium.png';
+import detailsOvalSmall from '../../assets/images/details_oval_small.png';
+
 
 import { Container } from './styles'
+import { DetailsNavBar } from '../../components/DetailsNavBar';
 
 export function Details() {
   const history = useHistory();
@@ -35,6 +40,9 @@ export function Details() {
           <header className="header__container">
             <img src={detailsBg} alt="Header of details" />
             <img src={detailsOval} alt="Header oval" />
+            <img src={detailsOvalMedium} alt="Header oval medium" />
+            <img src={detailsOvalSmall} alt="Header oval small" />
+            <img src={detailsOvalOutline} alt="Header oval outline" />
             <img src={currentDetailsBook.volumeInfo.imageLinks?.thumbnail || defaultImage} alt="Book in detail" />
           </header>
           <main className="main__container">
@@ -50,6 +58,7 @@ export function Details() {
           </main>
         </>
       )}
+      <DetailsNavBar />
     </Container>
   );
 }

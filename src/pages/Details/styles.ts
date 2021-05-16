@@ -36,6 +36,27 @@ export const Container = styled.div`
       right: 0;
     }
 
+    img:nth-child(3) {
+      position: absolute;
+      z-index: -1;
+      top: 115px;
+      left: 73px;
+    }
+
+    img:nth-child(4) {
+      position: absolute;
+      z-index: -1;
+      top: 125px;
+      left: 46px;
+    }
+
+    img:nth-child(5) {
+      position: absolute;
+      z-index: -1;
+      top: 86px;
+      left: 248px;
+    }
+
     img:last-child {
       margin-top: 5.25rem;
       height: 234px;
