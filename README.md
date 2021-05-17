@@ -32,7 +32,7 @@ Installation:
 or
 `yarn`
 
-Before running, you need to rename the file `.env-example` to `.env` (set new values if you want).
+Before running, you can rename the file `.env-example` to `.env` and set new values if you want.
 
 Then to start server:
 
