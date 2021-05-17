@@ -12,7 +12,7 @@ You can have a look at the app/run the app on the netlify badge above. Then, if 
 
 ## Project
 In this project I tried a lot of concepts that I know, like lifting up state with [Context API](https://reactjs.org/docs/context.html), custom hooks, debouncing api calls, CSS-in-JS with [styled-components](https://styled-components.com/), 
-even getting props through styled-components to render a border based on focus state and added a spinner after API calling. </br>
+even getting props through styled-components to render a border based on focus state and added a spinner during API calling. </br>
 It was a lot of work but a lot of fun.
 
 ## Improvements and feedforward
