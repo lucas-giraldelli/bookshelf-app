@@ -54,8 +54,8 @@ const BooksContext = createContext<BookContextProps>(
 export function BooksProvider({children}: BooksProviderProps) {
   const { REACT_APP_DEBOUNCE_TIME, REACT_APP_MAX_RESULTS } = process.env;
 
-  const maxDebounceTime = Number(REACT_APP_DEBOUNCE_TIME);
-  const maxResults = Number(REACT_APP_MAX_RESULTS);
+  const maxDebounceTime = Number(REACT_APP_DEBOUNCE_TIME) || 1500;
+  const maxResults = Number(REACT_APP_MAX_RESULTS) || 9;
 
   const [focused, setFocused] = useState(false);
   const [isLoading, setIsLoading] = useState(false);

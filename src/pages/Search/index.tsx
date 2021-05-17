@@ -12,8 +12,8 @@ import { Container, GridContainer, ResultsBox, Footer } from './styles';
 
 export function Search() {
   const { REACT_APP_MAX_RESULTS, REACT_APP_LOAD_MORE } = process.env;
-  const maxResults = Number(REACT_APP_MAX_RESULTS);
-  const loadMore = Number(REACT_APP_LOAD_MORE);
+  const maxResults = Number(REACT_APP_MAX_RESULTS) || 9;
+  const loadMore = Number(REACT_APP_LOAD_MORE) || 3;
 
   const {
     searchResults,

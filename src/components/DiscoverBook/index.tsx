@@ -22,9 +22,11 @@ export function DiscoverBook() {
   async function populateDiscoverBook() {
     const { REACT_APP_BOOKS_API_KEY } = process.env;
 
-    const book1 = await api.get(`/dsz5AwAAQBAJ?key=${REACT_APP_BOOKS_API_KEY}`);
+    const apiKey = REACT_APP_BOOKS_API_KEY ? `?key=${REACT_APP_BOOKS_API_KEY}` : '';
 
-    const book2 = await api.get(`/U10PAQAAMAAJ?key=${REACT_APP_BOOKS_API_KEY}`);
+    const book1 = await api.get(`/dsz5AwAAQBAJ${apiKey}`);
+
+    const book2 = await api.get(`/U10PAQAAMAAJ${apiKey}`);
 
     const bookIds = [book1.data.id, book2.data.id]; // like if we had already the listing
 
