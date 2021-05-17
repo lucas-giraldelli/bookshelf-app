@@ -45,4 +45,4 @@ To visit app:
 
 Then you need to press F12 and Ctrl + Shift + M, after that choose the option Reponsive and Mobile L (or minus).
 
-
+[![twitter](https://badges.aleen42.com/src/twitter.svg)](https://twitter.com/lucasgiraldelli)
