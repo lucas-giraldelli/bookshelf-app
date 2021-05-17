@@ -16,7 +16,7 @@ even getting props trough styled-components to render a border based on focused 
 It was a lot of work but a lot of fun.
 
 ## Project Running
-![ Running ](/repo/bookshelf_running.gif)
+![ Running ](https://im7.ezgif.com/tmp/ezgif-7-04ce7fc26b51.gif)
 
 ## Project WakaTime
 ![ Hours ](/repo/waka_time_project.png)
