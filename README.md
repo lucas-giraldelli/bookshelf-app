@@ -2,6 +2,8 @@
 [![react](https://badges.aleen42.com/src/react.svg)](https://reactjs.org/)
 [![typescript](https://badges.aleen42.com/src/typescript.svg)](https://reactrouter.com/)
 [![router](https://badges.aleen42.com/src/router.svg)](https://www.typescriptlang.org/)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e0520c02-e3c3-4f95-9ab4-e9bc6de8ef9c/deploy-status)](https://lucas-giraldelli-bookshelf.netlify.app/) </br>
+You can try the app by clicking on the netlify badge above, then, if not on mobile, F12 -> Ctrl+Shift+M.
 
 
 <h1 align="center">Bookshelf App</h1>
@@ -44,7 +46,7 @@ To visit app:
 
 `localhost:3000`
 
-Then you need to press F12 and Ctrl + Shift + M, after that choose the option Reponsive and Mobile L (or minus).
+Then, if not on mobile, you need to press F12 and Ctrl + Shift + M, after that choose the option Reponsive and Mobile L (or minus).
 
 [![twitter](https://badges.aleen42.com/src/twitter.svg)](https://twitter.com/lucasgiraldelli)
 
