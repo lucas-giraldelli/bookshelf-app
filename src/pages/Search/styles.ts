@@ -14,7 +14,8 @@ export const Container = styled.div`
 export const GridContainer = styled.main`
   padding: 0 1.25rem;
   display: grid;
-  grid-template-columns: repeat(3, 115px);
+  max-width: 150px;
+  grid-template-columns: repeat(3, 125%);
   row-gap: 0.75rem;
 
   a {
@@ -55,7 +56,7 @@ export const GridContainer = styled.main`
   }
 `;
 
-export const Footer = styled.footer`
+export const Footer = styled.button`
   display: flex;
   justify-content: space-between;
   align-items: center;

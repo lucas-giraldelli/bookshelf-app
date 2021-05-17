@@ -6,11 +6,12 @@ interface ContainerProps {
 
 export const Container = styled.form<ContainerProps>`
   display: flex;
+  justify-content: center;
   align-items: center;
   position: relative;
 
   height: 3rem;
-  max-width: 336px;
+  min-width: 336px;
   margin: 3.125rem 1.25rem 1.875rem;
 
   background: var(--input-background);

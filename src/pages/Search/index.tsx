@@ -50,14 +50,12 @@ export function Search() {
         ))}
         </GridContainer>
         {searchResults.length >= maxResults && (
-          <Footer>
+          <Footer
+            type="button"
+            onClick={() => increaseResults(loadMore)}
+          >
             <FiRefreshCcw />
-            <button
-              type="button"
-              onClick={() => increaseResults(loadMore)}
-            >
-            Load more
-            </button>
+            <button>Load more</button>
           </Footer>
         )}
       <Navigation />
