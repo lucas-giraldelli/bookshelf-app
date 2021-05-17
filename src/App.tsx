@@ -4,7 +4,7 @@ import { BooksProvider } from './hooks/useBooks';
 import { Routes } from './routes';
 import { GlobalStyle } from './styles/global';
 
-function App() {
+export function App() {
   return (
     <BooksProvider>
       <GlobalStyle />
@@ -15,5 +15,3 @@ function App() {
     </BooksProvider>
   );
 }
-
-export default App;
