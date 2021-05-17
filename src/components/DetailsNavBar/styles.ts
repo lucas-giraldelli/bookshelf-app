@@ -4,8 +4,9 @@ export const Container = styled.nav`
   color: var(--nav-links);
   position: fixed;
   width: 20rem;
-  left: 20px;
-  bottom: 3.3rem;
+  top: 86%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   height: 3.3rem;
   border-radius: 2px;
 
