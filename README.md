@@ -8,7 +8,7 @@ You can have a look at the app/run the app on the netlify badge above. Then, if 
 
 <h1 align="center">Bookshelf App</h1>
 <p align="center">An app for searching books and getting details, mobile first.</p>
-<p align="center">Project made with react, for FotonTech Frontend challenge.</p>
+<p align="center">Project made with react, typescript and react-router-dom.</p>
 
 ## Project
 In this project I tried a lot of concepts that I know, like lifting up state with [Context API](https://reactjs.org/docs/context.html), custom hooks, debouncing api calls, CSS-in-JS with [styled-components](https://styled-components.com/), 
