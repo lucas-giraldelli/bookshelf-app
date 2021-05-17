@@ -3,7 +3,7 @@
 [![typescript](https://badges.aleen42.com/src/typescript.svg)](https://reactrouter.com/)
 [![router](https://badges.aleen42.com/src/router.svg)](https://www.typescriptlang.org/)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/e0520c02-e3c3-4f95-9ab4-e9bc6de8ef9c/deploy-status)](https://lucas-giraldelli-bookshelf.netlify.app/) </br>
-You can try the app by clicking on the netlify badge above, then, if not on mobile, F12 -> Ctrl+Shift+M.
+You can have a look in the app/run the app on the netlify badge above. Then, if not in mobile mode, F12 -> Ctrl+Shift+M.
 
 
 <h1 align="center">Bookshelf App</h1>
@@ -11,12 +11,12 @@ You can try the app by clicking on the netlify badge above, then, if not on mobi
 <p align="center">Project made with react, for FotonTech Frontend challenge.</p>
 
 ## Project
-
-The project is not perfect, could have some more polishing trough [useReducer](https://reactjs.org/docs/hooks-reference.html#usereducer) or even a better
-state lifintg tool, like [redux-toolkit](https://redux-toolkit.js.org/). </br></br>
-In this project I tried a lot of concepts that I know, like lifting up state([Context API](https://reactjs.org/docs/context.html)), custom hooks, CSS-in-JS([styled-components](https://styled-components.com/)), 
-even getting props trough styled-components to render a border based on focused state and added a spinner after API calling. </br>
+In this project I tried a lot of concepts that I know, like lifting up state with [Context API](https://reactjs.org/docs/context.html), custom hooks, debouncing api calls, CSS-in-JS with [styled-components](https://styled-components.com/), 
+even getting props through styled-components to render a border based on focus state and added a spinner after API calling. </br>
 It was a lot of work but a lot of fun.
+
+## Improvements and feedforward
+During the development of this project, some improvement ideas have shown up, like having a better polishing through [useReducer](https://reactjs.org/docs/hooks-reference.html#usereducer) or even a better state lifting tool, like [redux-toolkit](https://redux-toolkit.js.org/).
 
 ## Project Running
 https://user-images.githubusercontent.com/47604748/118429839-a12c7500-b6a0-11eb-81a8-beaf26ed5297.mp4
@@ -46,7 +46,7 @@ To visit app:
 
 `localhost:3000`
 
-Then, if not on mobile, you need to press F12 and Ctrl + Shift + M, after that choose the option Reponsive and Mobile L (or minus).
+Then, if not on mobile mode, you need to press F12 and Ctrl + Shift + M. After that, choose the option Responsive  and Mobile L (or minus).
 
 [![twitter](https://badges.aleen42.com/src/twitter.svg)](https://twitter.com/lucasgiraldelli)
 
