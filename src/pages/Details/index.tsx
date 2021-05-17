@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useHistory, useLocation } from 'react-router';
+import { useHistory } from 'react-router';
 import { useBooks, Book } from '../../hooks/useBooks';
 import { FiArrowLeft } from 'react-icons/fi';
 import Parser from 'html-react-parser';
