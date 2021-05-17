@@ -9,14 +9,15 @@
 <p align="center">Project made with react, for FotonTech Frontend challenge.</p>
 
 ## Project
+
 The project is not perfect, could have some more polishing trough [useReducer](https://reactjs.org/docs/hooks-reference.html#usereducer) or even a better
-state lifintg tool, like [redux-toolkit](https://redux-toolkit.js.org/). </br>
+state lifintg tool, like [redux-toolkit](https://redux-toolkit.js.org/). </br></br>
 In this project I tried a lot of concepts that I know, like lifting up state([Context API](https://reactjs.org/docs/context.html)), custom hooks, CSS-in-JS([styled-components](https://styled-components.com/)), 
 even getting props trough styled-components to render a border based on focused state and added a spinner after API calling. </br>
 It was a lot of work but a lot of fun.
 
 ## Project Running
-![ Running ](https://im7.ezgif.com/tmp/ezgif-7-04ce7fc26b51.gif)
+https://user-images.githubusercontent.com/47604748/118429839-a12c7500-b6a0-11eb-81a8-beaf26ed5297.mp4
 
 ## Project WakaTime
 ![ Hours ](/repo/waka_time_project.png)
@@ -46,3 +47,4 @@ To visit app:
 Then you need to press F12 and Ctrl + Shift + M, after that choose the option Reponsive and Mobile L (or minus).
 
 [![twitter](https://badges.aleen42.com/src/twitter.svg)](https://twitter.com/lucasgiraldelli)
+
