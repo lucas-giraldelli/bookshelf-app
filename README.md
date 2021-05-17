@@ -3,7 +3,7 @@
 [![typescript](https://badges.aleen42.com/src/typescript.svg)](https://reactrouter.com/)
 [![router](https://badges.aleen42.com/src/router.svg)](https://www.typescriptlang.org/)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/e0520c02-e3c3-4f95-9ab4-e9bc6de8ef9c/deploy-status)](https://lucas-giraldelli-bookshelf.netlify.app/) </br>
-You can have a look in the app/run the app on the netlify badge above. Then, if not in mobile mode, F12 -> Ctrl+Shift+M.
+You can have a look at the app/run the app on the netlify badge above. Then, if not in mobile mode, F12 -> Ctrl+Shift+M.
 
 
 <h1 align="center">Bookshelf App</h1>
