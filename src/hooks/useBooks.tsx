@@ -114,7 +114,7 @@ export function BooksProvider({children}: BooksProviderProps) {
   }
 
   async function callApi(query: string, maxResults: number) {
-    const replacedQuery = query.replace(/\s/, '+');
+    const replacedQuery = query.replace(/\s/g, '+');
 
     const queryString = `?q=${replacedQuery}&maxResults=${maxResults}`;
 
